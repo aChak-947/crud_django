@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Course</th>
+            <th scope="col">Department</th>
+            <th scope="col">Batch</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for student in student_list %}
+                <tr>
+                    <td>{{ student.auto_increment_id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.course }}</td>
+                    <td>{{ student.department }}</td>
+                    <td>{{ student.batch }}</td>
+                    <td><a href="{% url 'update-student' student.auto_increment_id %}">Edit</a></td> 
+                    <td><a href="{% url 'delete-student' student.auto_increment_id %}">Delete</a></td>   
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
